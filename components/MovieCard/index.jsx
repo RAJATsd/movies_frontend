@@ -1,5 +1,6 @@
 import MovieImageHolder from "../MovieImageHolder";
 import styles from "./styles.module.css";
+import BookmarkIcon from "@mui/icons-material/Bookmark";
 
 const MovieCard = ({
   id,
@@ -11,6 +12,9 @@ const MovieCard = ({
 }) => {
   return (
     <div className={styles.movieCard} onClick={() => onClick(id)}>
+      <div className={styles.watchlistContainer}>
+        <BookmarkIcon htmlColor="lightGrey" />
+      </div>
       <MovieImageHolder imgSrc={poster} altText={`${title} poster`} />
       <div className={styles.movieDetails}>
         <div className={styles.nameAndRatingContainer}>

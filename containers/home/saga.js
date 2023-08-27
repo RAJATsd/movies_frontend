@@ -43,7 +43,7 @@ function* fetchMoreMovies(action) {
 
 function* searchMovie(action) {
   try {
-    const url = apiUrl(``);
+    const url = apiUrl(`movies?query=${action.payload}`);
 
     const response = yield fetch(url);
     const data = yield response.json();

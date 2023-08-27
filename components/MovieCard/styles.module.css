@@ -5,6 +5,7 @@
   box-shadow: 0.5px 1px 10px -3px rgba(0, 0, 0, 0.44);
   overflow: hidden;
   cursor: pointer;
+  position: relative;
 }
 
 .movieImageContainer {
@@ -43,4 +44,15 @@
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
+}
+
+.watchlistContainer {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  width: 34px;
+  height: 34px;
 }
