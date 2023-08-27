@@ -1,0 +1,55 @@
+.searchBar,
+.searchInput {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.searchBar {
+  padding: 10px;
+  -webkit-box-shadow: 0px 2px 14px -4px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 2px 14px -4px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 2px 14px -4px rgba(0, 0, 0, 0.75);
+}
+
+.inputAndButtons {
+  display: flex;
+  align-items: center;
+  column-gap: 20px;
+}
+
+.searchInput {
+  background: #dedede;
+  padding: 10px 8px;
+  border-radius: 8px;
+}
+
+.searchInput input {
+  background: none;
+  border: none;
+  margin-left: 15px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  width: 40vw;
+}
+
+.searchInput input:focus-visible {
+  border: none;
+  outline: none;
+}
+
+.pageTitle {
+  font-size: 1.4rem;
+  vertical-align: middle;
+  padding: 9px 0;
+}
+
+.actionButton {
+  padding: 5px 20px;
+  background: greenyellow;
+  border: none;
+  border-radius: 4px;
+  height: 44px;
+  margin: 0 10px;
+  cursor: pointer;
+}
