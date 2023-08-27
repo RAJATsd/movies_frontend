@@ -1,0 +1,46 @@
+.movieCard {
+  border-radius: 8px;
+  -webkit-box-shadow: 0.5px 1px 10px -3px rgba(0, 0, 0, 0.44);
+  -moz-box-shadow: 0.5px 1px 10px -3px rgba(0, 0, 0, 0.44);
+  box-shadow: 0.5px 1px 10px -3px rgba(0, 0, 0, 0.44);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.movieImageContainer {
+  height: 300px;
+  background: #dedede;
+}
+
+.movieImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.movieDetails {
+  padding: 10px;
+}
+
+.nameAndRatingContainer {
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+}
+
+.nameAndRatingContainer .movieName {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #4a4a4a;
+  font-weight: 500;
+}
+
+.movieDescription {
+  margin-top: 5px;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+}

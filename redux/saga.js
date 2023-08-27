@@ -1,7 +1,9 @@
-import { all } from "redux-saga/effects";
+import { all, fork } from "redux-saga/effects";
+
+import watchHome from "@/containers/home/saga";
 
 const rootSaga = function* () {
-  yield all([]);
+  yield all([fork(watchHome)]);
 };
 
 export default rootSaga;
