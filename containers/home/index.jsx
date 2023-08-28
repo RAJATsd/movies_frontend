@@ -6,9 +6,11 @@ import { useRouter } from "next/router";
 import MovieCard from "@/components/MovieCard";
 import styles from "./styles.module.css";
 import {
+  addChecklistAndLikeStart,
   fetchChecklistAndLikeStart,
   fetchMoreMoviesStart,
   fetchMovieListStart,
+  removeChecklistAndLikeStart,
   searchMoreMoviesStart,
 } from "./reducer";
 import {
@@ -62,6 +64,14 @@ const HomePage = () => {
     );
   };
 
+  const onWatchListClick = (movieId, isWatchlisted) => {
+    if (isWatchlisted) {
+      dispatch(removeChecklistAndLikeStart({ movieId, entity: "watchlist" }));
+    } else {
+      dispatch(addChecklistAndLikeStart({ movieId, entity: "watchlist" }));
+    }
+  };
+
   return (
     <InfiniteScroll
       dataLength={
@@ -93,6 +103,8 @@ const HomePage = () => {
               description={plot}
               poster={poster}
               onClick={handleCardClick}
+              onWatchListClick={onWatchListClick}
+              isWatchListed={!!watchlistAndLikesData?.watchlist?.[_id]}
             />
           )
         )}

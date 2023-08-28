@@ -9,11 +9,18 @@ const MovieCard = ({
   description = "This is the description on the front of everything and harry fights everyone in the scene ",
   poster,
   onClick,
+  onWatchListClick,
+  isWatchListed,
 }) => {
+  function handleWatchlistClick(evt) {
+    evt.stopPropagation();
+    onWatchListClick(id, isWatchListed);
+  }
+
   return (
     <div className={styles.movieCard} onClick={() => onClick(id)}>
-      <div className={styles.watchlistContainer}>
-        <BookmarkIcon htmlColor="lightGrey" />
+      <div className={styles.watchlistContainer} onClick={handleWatchlistClick}>
+        <BookmarkIcon htmlColor={isWatchListed ? "black" : "lightGrey"} />
       </div>
       <MovieImageHolder imgSrc={poster} altText={`${title} poster`} />
       <div className={styles.movieDetails}>
