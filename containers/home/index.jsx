@@ -72,6 +72,14 @@ const HomePage = () => {
     }
   };
 
+  const onLikeClick = (movieId, isLiked) => {
+    if (isLiked) {
+      dispatch(removeChecklistAndLikeStart({ movieId, entity: "like" }));
+    } else {
+      dispatch(addChecklistAndLikeStart({ movieId, entity: "like" }));
+    }
+  };
+
   return (
     <InfiniteScroll
       dataLength={
@@ -104,7 +112,9 @@ const HomePage = () => {
               poster={poster}
               onClick={handleCardClick}
               onWatchListClick={onWatchListClick}
+              onLikeClick={onLikeClick}
               isWatchListed={!!watchlistAndLikesData?.watchlist?.[_id]}
+              isLiked={!!watchlistAndLikesData?.like?.[_id]}
             />
           )
         )}

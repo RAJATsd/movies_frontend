@@ -1,6 +1,7 @@
 import MovieImageHolder from "../MovieImageHolder";
 import styles from "./styles.module.css";
 import BookmarkIcon from "@mui/icons-material/Bookmark";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const MovieCard = ({
   id,
@@ -11,16 +12,32 @@ const MovieCard = ({
   onClick,
   onWatchListClick,
   isWatchListed,
+  onLikeClick,
+  isLiked,
 }) => {
   function handleWatchlistClick(evt) {
     evt.stopPropagation();
     onWatchListClick(id, isWatchListed);
   }
 
+  function handleLikeClick(evt) {
+    evt.stopPropagation();
+    onLikeClick(id, isLiked);
+  }
+
   return (
     <div className={styles.movieCard} onClick={() => onClick(id)}>
-      <div className={styles.watchlistContainer} onClick={handleWatchlistClick}>
+      <div
+        className={`${styles.actionButtonContainer} ${styles.watchlistContainer}`}
+        onClick={handleWatchlistClick}
+      >
         <BookmarkIcon htmlColor={isWatchListed ? "black" : "lightGrey"} />
+      </div>
+      <div
+        className={`${styles.actionButtonContainer} ${styles.likeContainer}`}
+        onClick={handleLikeClick}
+      >
+        <FavoriteIcon htmlColor={isLiked ? "red" : "lightGrey"} />
       </div>
       <MovieImageHolder imgSrc={poster} altText={`${title} poster`} />
       <div className={styles.movieDetails}>
