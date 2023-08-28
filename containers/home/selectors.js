@@ -13,8 +13,23 @@ const makeSelectSearchedMovies = () =>
 const makeSelectSearchQuery = () =>
   createSelector(selectMovieState, (subState) => subState.searchQuery);
 
+const makeSelectWatchlistAndLikes = () =>
+  createSelector(selectMovieState, (subState) => subState.checklistAndLike);
+
+const makeSelectAddWatchlistAndLikes = () =>
+  createSelector(selectMovieState, (subState) => subState.addChecklistAndLike);
+
+const makeSelectRemoveWatchlistAndLikes = () =>
+  createSelector(
+    selectMovieState,
+    (subState) => subState.removeChecklistAndLike
+  );
+
 export {
   makeSelectMoviesList,
   makeSelectSearchedMovies,
   makeSelectSearchQuery,
+  makeSelectWatchlistAndLikes,
+  makeSelectAddWatchlistAndLikes,
+  makeSelectRemoveWatchlistAndLikes,
 };

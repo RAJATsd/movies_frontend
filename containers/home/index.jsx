@@ -6,6 +6,7 @@ import { useRouter } from "next/router";
 import MovieCard from "@/components/MovieCard";
 import styles from "./styles.module.css";
 import {
+  fetchChecklistAndLikeStart,
   fetchMoreMoviesStart,
   fetchMovieListStart,
   searchMoreMoviesStart,
@@ -14,6 +15,7 @@ import {
   makeSelectMoviesList,
   makeSelectSearchedMovies,
   makeSelectSearchQuery,
+  makeSelectWatchlistAndLikes,
 } from "./selectors";
 
 const HomePage = () => {
@@ -21,6 +23,9 @@ const HomePage = () => {
   const dispatch = useDispatch();
   const { data } = useSelector(makeSelectMoviesList());
   const { data: searchedMovieData } = useSelector(makeSelectSearchedMovies());
+  const { data: watchlistAndLikesData } = useSelector(
+    makeSelectWatchlistAndLikes()
+  );
   const searchQuery = useSelector(makeSelectSearchQuery());
 
   const { page, total_pages, results } = data || {};
@@ -36,6 +41,12 @@ const HomePage = () => {
       dispatch(fetchMovieListStart());
     }
   }, [results]);
+
+  useEffect(() => {
+    if (!watchlistAndLikesData) {
+      dispatch(fetchChecklistAndLikeStart());
+    }
+  }, [watchlistAndLikesData]);
 
   const fetchMoreMovies = () => {
     dispatch(fetchMoreMoviesStart(page + 1));
