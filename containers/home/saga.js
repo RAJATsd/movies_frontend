@@ -25,10 +25,18 @@ import {
   removeChecklistAndLikeSuccess,
 } from "./reducer";
 
-function* fetchMovies() {
+function* fetchMovies(action) {
   try {
+    const { sortBy, year, genre } = action.payload || {};
+    const queryParams = new URLSearchParams();
+    queryParams.append("sortBy", sortBy);
+    queryParams.append("year", year);
+    queryParams.append("genre", genre);
     const url = apiUrl("movies");
-    const response = yield fetch(url);
+    const finalUrl = new URL(url);
+    finalUrl.search = queryParams.toString();
+
+    const response = yield fetch(finalUrl);
     const data = yield response.json();
 
     yield put(fetchMovieListSuccess(data));
@@ -39,9 +47,17 @@ function* fetchMovies() {
 
 function* fetchMoreMovies(action) {
   try {
-    const url = apiUrl(`movies?page=${action.payload}`);
+    const { page, sortBy, year, genre } = action.payload;
+    const queryParams = new URLSearchParams();
+    queryParams.append("page", page);
+    queryParams.append("sortBy", sortBy);
+    queryParams.append("year", year);
+    queryParams.append("genre", genre);
+    const url = apiUrl("movies");
+    const finalUrl = new URL(url);
+    finalUrl.search = queryParams.toString();
 
-    const response = yield fetch(url);
+    const response = yield fetch(finalUrl);
     const data = yield response.json();
 
     yield put(fetchMoreMoviesSuccess(data));
