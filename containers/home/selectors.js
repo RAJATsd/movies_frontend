@@ -14,7 +14,7 @@ const makeSelectSearchQuery = () =>
   createSelector(selectMovieState, (subState) => subState.searchQuery);
 
 const makeSelectWatchlistAndLikes = () =>
-  createSelector(selectMovieState, (subState) => subState.checklistAndLike);
+  createSelector(selectMovieState, (subState) => subState.watchlistAndLike);
 
 const makeSelectAddWatchlistAndLikes = () =>
   createSelector(selectMovieState, (subState) => subState.addChecklistAndLike);

@@ -1,7 +1,7 @@
 import {
-  checklistConverter,
-  removeChecklistOrLike,
-} from "@/utils/checklistConverter";
+  watchlistConverter,
+  removeWatchlistOrLike,
+} from "@/utils/watchlistConverter";
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
@@ -26,7 +26,7 @@ const initialState = {
     error: null,
     loading: false,
   },
-  checklistAndLike: {
+  watchlistAndLike: {
     data: null,
     error: null,
     loading: false,
@@ -111,23 +111,23 @@ const fetchMoviesSlice = createSlice({
       state.searchQuery = action.payload;
     },
     fetchChecklistAndLikeStart(state) {
-      state.checklistAndLike.loading = true;
+      state.watchlistAndLike.loading = true;
     },
     fetchChecklistAndLikeSuccess(state, action) {
-      state.checklistAndLike.data = checklistConverter(action.payload);
-      state.checklistAndLike.error = null;
-      state.checklistAndLike.loading = false;
+      state.watchlistAndLike.data = watchlistConverter(action.payload);
+      state.watchlistAndLike.error = null;
+      state.watchlistAndLike.loading = false;
     },
     fetchChecklistAndLikeError(state, action) {
-      state.checklistAndLike.data = null;
-      state.checklistAndLike.error = action.payload;
-      state.checklistAndLike.loading = false;
+      state.watchlistAndLike.data = null;
+      state.watchlistAndLike.error = action.payload;
+      state.watchlistAndLike.loading = false;
     },
     addChecklistAndLikeStart(state) {
       state.addChecklistAndLike.loading = true;
     },
     addChecklistAndLikeSuccess(state, action) {
-      state.checklistAndLike.data = checklistConverter(action.payload);
+      state.watchlistAndLike.data = watchlistConverter(action.payload);
       state.addChecklistAndLike.data = action.payload;
       state.addChecklistAndLike.error = null;
       state.addChecklistAndLike.loading = false;
@@ -141,8 +141,8 @@ const fetchMoviesSlice = createSlice({
       state.removeChecklistAndLike.loading = true;
     },
     removeChecklistAndLikeSuccess(state, action) {
-      state.checklistAndLike.data = removeChecklistOrLike(
-        state.checklistAndLike.data,
+      state.watchlistAndLike.data = removeWatchlistOrLike(
+        state.watchlistAndLike.data,
         action.payload.entity,
         action.payload.movieId
       );

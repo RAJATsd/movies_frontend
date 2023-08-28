@@ -1,4 +1,4 @@
-export const checklistConverter = (data) => {
+export const watchlistConverter = (data) => {
   if (!data) {
     return null;
   }
@@ -18,7 +18,7 @@ export const checklistConverter = (data) => {
   return convertedData;
 };
 
-export const removeChecklistOrLike = (data, entity, movieId) => {
+export const removeWatchlistOrLike = (data, entity, movieId) => {
   const newData = {
     ...data,
     [entity]: { ...data[entity], [movieId]: undefined },
